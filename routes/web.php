@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,46 +28,17 @@ Route::get('/about', function () {
 });
 
 Route::get('/blog', function () {
-  $blog_post =
-    [
-      [
-        "title" => "Blog",
-        "slug" => "judul-pertama",
-        "author" => "Maha Dwi Putra",
-        "isi" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus molestias ipsam optio? Sequi vitae tempora asperiores. Facere omnis laudantium maxime nihil deserunt quaerat necessitatibus aspernatur praesentium similique ea. Accusantium maiores placeat sequi, alias illo voluptatibus laboriosam eaque ipsum dolores modi aliquid at, error totam. Sed doloremque vero eaque, dolores eos beatae delectus quidem et exercitationem quod, hic excepturi, rem provident magnam modi blanditiis quo. Cum aliquid, deserunt quos consectetur officiis ut laudantium repellat voluptates eius ratione magni perferendis distinctio odit?"
-      ],
-      [
-        "title" => "Oke",
-        "slug" => "judul-kedua",
-        "author" => "Ibrahim",
-        "isi" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus molestias ipsam optio? Sequi vitae tempora asperiores. Facere omnis laudantium maxime nihil deserunt quaerat necessitatibus aspernatur praesentium similique ea. Accusantium maiores placeat sequi, alias illo voluptatibus laboriosam eaque ipsum dolores modi aliquid at, error totam. Sed doloremque vero eaque, dolores eos beatae delectus quidem et exercitationem quod, "
-      ]
-    ];
   return view('blog', [
     "title" => "Blog",
-    "posts" => $blog_post
+    "posts" => Post::all()
   ]);
 });
 
 // halaman single post
 Route::get('/blog/{slug}', function ($slug) {
-  $blog_post =
-    [
-      [
-        "title" => "Blog",
-        "slug" => "judul-pertama",
-        "author" => "Maha Dwi Putra",
-        "isi" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus molestias ipsam optio? Sequi vitae tempora asperiores. Facere omnis laudantium maxime nihil deserunt quaerat necessitatibus aspernatur praesentium similique ea. Accusantium maiores placeat sequi, alias illo voluptatibus laboriosam eaque ipsum dolores modi aliquid at, error totam. Sed doloremque vero eaque, dolores eos beatae delectus quidem et exercitationem quod, hic excepturi, rem provident magnam modi blanditiis quo. Cum aliquid, deserunt quos consectetur officiis ut laudantium repellat voluptates eius ratione magni perferendis distinctio odit?"
-      ],
-      [
-        "title" => "Oke",
-        "slug" => "judul-kedua",
-        "author" => "Ibrahim",
-        "isi" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus molestias ipsam optio? Sequi vitae tempora asperiores. Facere omnis laudantium maxime nihil deserunt quaerat necessitatibus aspernatur praesentium similique ea. Accusantium maiores placeat sequi, alias illo voluptatibus laboriosam eaque ipsum dolores modi aliquid at, error totam. Sed doloremque vero eaque, dolores eos beatae delectus quidem et exercitationem quod, "
-      ]
-    ];
+
   return view('post', [
     "title" => "Single Post",
-    "post" => $blog_post
+    "post" => Post::find($slug)
   ]);
 });

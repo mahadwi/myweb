@@ -1,11 +1,9 @@
 @extends('layout.main')
 @section('container')
 <article>
-  @foreach ($post as $item)
-  <h2>{{ $item['title'] }}</h2>
-  <h6>{{ $item['author'] }}</h6>
-  <p>{{ $item['isi'] }}</p>
-  @endforeach
+    <h2>{{ $post["title"] }}</h2>
+    <h6>{{ $post["author"] }}</h6>
+    <p>{{ $post["isi"] }}</p>
 </article>
 <a href="/blog">Back To Post</a>
 @endsection
